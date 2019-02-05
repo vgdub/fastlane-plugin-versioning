@@ -7,6 +7,7 @@ module Fastlane
       def self.run(params)
         if params[:bundle_id]
           bundle_id = params[:bundle_id]
+          country = params[:country]
         else
           if Helper.test?
             plist = "/tmp/fastlane/tests/fastlane/Info.plist"
@@ -16,7 +17,7 @@ module Fastlane
           bundle_id = GetInfoPlistValueAction.run(path: plist, key: 'CFBundleIdentifier')
         end
 
-        uri = URI("http://itunes.apple.com/lookup?bundleId=#{bundle_id}")
+        uri = URI("http://itunes.apple.com/lookup?bundleId=#{bundle_id}&country=#{country}")
         Net::HTTP.get(uri)
 
         response = Net::HTTP.get_response(uri)
