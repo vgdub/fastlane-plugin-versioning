@@ -67,7 +67,10 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :build_configuration_name,
                              optional: true,
                              conflicting_options: [:bundle_id],
-                             description: "Specify a specific build configuration if you have different Info.plist build settings for each configuration")
+                             description: "Specify a specific build configuration if you have different Info.plist build settings for each configuration"),
+          FastlaneCore::ConfigItem.new(key: :country,
+                             optional: true)
+
         ]
       end
 
